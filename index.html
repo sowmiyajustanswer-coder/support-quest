@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+        <html>
+          <head>
+            <title data-id="th-modified">Web Page</title>
+            
+          <meta property="og:title" content="Web Page" data-id="th-modified" ><meta name="description" content="code" data-id="th-modified" ><meta property="og:description" content="code" data-id="th-modified" ><meta property="og:image" content="https://tiiny.host/assets/logo-purple-bg.png" data-id="th-modified" ><meta property="og:image:width" content="1501" data-id="th-modified" ><meta property="og:image:height" content="1501" data-id="th-modified" ><meta property="og:image:type" content="image/png" data-id="th-modified" ><meta property="og:url" content="https://supportarena.tiiny.site/" data-id="th-modified" ><meta property="og:type" content="website" data-id="th-modified" ><script defer data-domain="supportarena.tiiny.site" src="https://analytics.tiiny.net/js/plausible.js"></script><script type="text/javascript" src="https://tiiny.host/ad-script.js"></script></head>
+          <body>
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Quest: The Empathy & Ownership Arena</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Crisp Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti for Celebrations -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top left, #1e1b4b, #0f172a 55%, #090d16);
+            color: #f8fafc;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, .font-display {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        /* Custom animations and glassmorphism */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+        }
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .gradient-border {
+            position: relative;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(20, 184, 166, 0.15));
+            border: 1px solid rgba(129, 140, 248, 0.35);
+        }
+        .btn-glow {
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-glow:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.55);
+        }
+        .btn-glow:active:not(:disabled) {
+            transform: translateY(0);
+        }
+        .option-card {
+            transition: all 0.2s ease;
+        }
+        .option-card:hover {
+            transform: translateX(4px);
+            border-color: rgba(129, 140, 248, 0.6);
+            background: rgba(51, 65, 85, 0.85);
+        }
+        @keyframes pulseFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        .float-anim {
+            animation: pulseFloat 3.5s ease-in-out infinite;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-in {
+            animation: slideIn 0.4s ease-out forwards;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 999px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Top Navigation / HUD Bar -->
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/80 backdrop-blur-md">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-teal-400 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+                    <i class="fa-solid fa-headset text-white text-lg"></i>
+                </div>
+                <div>
+                    <span class="font-display font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-indigo-200 to-teal-200 bg-clip-text text-transparent">
+                        SUPPORT QUEST
+                    </span>
+                    <span class="hidden sm:inline-block ml-2 text-xs font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-400/30">
+                        3rd-Party Tech & CX Arena
+                    </span>
+                </div>
+            </div>
+
+            <!-- Live Game Stats HUD (Hidden on welcome screen, visible during missions) -->
+            <div id="hud-stats" class="hidden flex items-center gap-2 sm:gap-4 text-xs sm:text-sm">
+                <div class="glass-pill px-3 py-1.5 rounded-xl flex items-center gap-2">
+                    <i class="fa-solid fa-user-astronaut text-teal-400"></i>
+                    <span id="hud-agent-name" class="font-semibold text-slate-200 max-w-[110px] truncate">Agent</span>
+                </div>
+                <div class="glass-pill px-3 py-1.5 rounded-xl flex items-center gap-2">
+                    <i class="fa-solid fa-fire text-amber-400"></i>
+                    <span class="text-slate-400 hidden md:inline">Streak:</span>
+                    <span id="hud-streak" class="font-bold text-amber-300">0</span>
+                </div>
+                <div class="glass-pill px-3 py-1.5 rounded-xl flex items-center gap-2">
+                    <i class="fa-solid fa-star text-indigo-400"></i>
+                    <span class="text-slate-400 hidden md:inline">XP:</span>
+                    <span id="hud-xp" class="font-bold text-indigo-300">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Global Mission Progress Bar -->
+        <div id="progress-container" class="hidden w-full bg-slate-900 h-1.5">
+            <div id="global-progress-bar" class="h-full bg-gradient-to-r from-indigo-500 via-teal-400 to-emerald-400 transition-all duration-500" style="width: 0%"></div>
+        </div>
+    </header>
+
+    <!-- Custom Toast / Notification Banner (Replaces alert) -->
+    <div id="toast-box" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="glass-card border-l-4 border-teal-400 px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 max-w-sm">
+            <i id="toast-icon" class="fa-solid fa-circle-check text-teal-400 text-xl"></i>
+            <p id="toast-message" class="text-sm font-medium text-white">Notification</p>
+        </div>
+    </div>
+
+    <!-- MAIN APPLICATION CONTAINER -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+
+        <!-- ========================================== -->
+        <!-- SCREEN 1: WELCOME & AGENT BRIEFING         -->
+        <!-- ========================================== -->
+        <section id="screen-welcome" class="slide-in">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 md:p-12 relative overflow-hidden">
+                <!-- Decorative background orbs -->
+                <div class="absolute -top-24 -right-24 w-72 h-72 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-teal-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    <div class="lg:col-span-7 space-y-5">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-500/15 border border-teal-400/30 text-teal-300 text-xs font-bold uppercase tracking-wider">
+                            <i class="fa-solid fa-shield-halved"></i> Interactive QA Simulation
+                        </div>
+                        <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight text-white">
+                            Master High-Stakes <span class="bg-gradient-to-r from-indigo-400 via-teal-300 to-amber-300 bg-clip-text text-transparent">Customer Conversations</span>
+                        </h1>
+                        <p class="text-slate-300 text-base sm:text-lg leading-relaxed">
+                            Welcome to the <strong class="text-white">Empathy & Ownership Arena</strong>. Designed specifically for Third-Party Technical Support Experts handling complex tech & non-tech tickets, OEM hand-offs, and unresolvable dead-ends.
+                        </p>
+
+                        <!-- QA Pillars Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                            <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-800/60 border border-white/5">
+                                <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-300 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-heart"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-white">Empathy & Ownership</h3>
+                                    <p class="text-xs text-slate-400">De-escalate frustrated users without making them repeat steps.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-800/60 border border-white/5">
+                                <div class="w-8 h-8 rounded-lg bg-teal-500/20 text-teal-300 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-handshake-angle"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-white">3rd-Party OEM Boundaries</h3>
+                                    <p class="text-xs text-slate-400">Explain non-affiliated OEM referrals smoothly without blame.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-800/60 border border-white/5">
+                                <div class="w-8 h-8 rounded-lg bg-coral-500/20 text-rose-300 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-compass"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-white">Delivering Unfavorable News</h3>
+                                    <p class="text-xs text-slate-400">Communicate dead-ends transparently with helpful workarounds.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3 p-3 rounded-2xl bg-slate-800/60 border border-white/5">
+                                <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-sm font-bold text-white">Positive Scripting & Probing</h3>
+                                    <p class="text-xs text-slate-400">Use courteous modal verbs ("would", "could", "may") & zero assumptions.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Agent Registration Card -->
+                    <div class="lg:col-span-5">
+                        <div class="gradient-border rounded-3xl p-6 sm:p-8 shadow-xl">
+                            <div class="text-center mb-6">
+                                <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-indigo-500 to-teal-400 flex items-center justify-center text-white text-2xl shadow-lg float-anim mb-3">
+                                    <i class="fa-solid fa-rocket"></i>
+                                </div>
+                                <h2 class="font-display text-xl font-bold text-white">Expert Mission Check-In</h2>
+                                <p class="text-xs text-slate-300 mt-1">5 Missions • ~8 Mins • Instant QA Scorecard</p>
+                            </div>
+
+                            <form id="agent-setup-form" class="space-y-4">
+                                <div>
+                                    <label for="agent-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+                                        Expert Full Name <span class="text-rose-400">*</span>
+                                    </label>
+                                    <input type="text" id="agent-name" required placeholder="e.g., Priya Sharma"
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/30 transition">
+                                </div>
+                                <div>
+                                    <label for="agent-email" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">
+                                        Email Address <span class="text-rose-400">*</span>
+                                    </label>
+                                    <input type="email" id="agent-email" required placeholder="e.g., alex.sharma@company.com"
+                                        class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/30 transition">
+                                </div>
+
+                                <div class="p-3 rounded-xl bg-indigo-950/60 border border-indigo-500/30 text-xs text-indigo-200 flex items-start gap-2.5">
+                                    <i class="fa-solid fa-lightbulb text-amber-300 mt-0.5"></i>
+                                    <span><strong>Pro Tip:</strong> Your written replies are evaluated live for tone, ownership, modal courtesy ("would/could/may"), and clear next steps!</span>
+                                </div>
+
+                                <button type="submit"
+                                    class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-teal-500 hover:from-indigo-400 hover:to-teal-400 text-white font-display font-bold text-base shadow-lg btn-glow flex items-center justify-center gap-2 cursor-pointer">
+                                    <span>Launch Support Quest</span>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SCREEN 2: ACTIVE MISSION ARENA             -->
+        <!-- ========================================== -->
+        <section id="screen-mission" class="hidden slide-in space-y-6">
+            <!-- Mission Stepper Pills -->
+            <div id="mission-stepper" class="flex flex-wrap items-center justify-center gap-2">
+                <!-- Injected dynamically via JS -->
+            </div>
+
+            <!-- Dynamic Mission Card Container -->
+            <div id="mission-container" class="glass-card rounded-3xl p-6 sm:p-8 md:p-10">
+                <!-- Mission content injected dynamically -->
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SCREEN 3: FINAL QA EVALUATION SCORECARD    -->
+        <!-- ========================================== -->
+        <section id="screen-results" class="hidden slide-in space-y-6">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <!-- Header Banner -->
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b border-white/10 pb-8">
+                    <div>
+                        <div id="final-rank-badge" class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-wider mb-3">
+                            <i class="fa-solid fa-crown"></i> QA Rank Evaluated
+                        </div>
+                        <h1 class="font-display text-3xl sm:text-4xl font-extrabold text-white">
+                            Mission Debrief & QA Scorecard
+                        </h1>
+                        <p class="text-slate-300 mt-1 text-sm sm:text-base">
+                            Expert: <strong id="res-agent-name" class="text-white">Agent</strong>
+                            <span id="res-agent-email" class="text-teal-300 ml-2"></span>
+                        </p>
+                    </div>
+
+                    <!-- Circular / Hero Score Display -->
+                    <div class="flex items-center gap-5 bg-slate-900/80 border border-white/10 p-5 rounded-2xl">
+                        <div class="text-center">
+                            <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Overall QA Score</div>
+                            <div id="res-percentage" class="font-display text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-teal-300 to-emerald-400 bg-clip-text text-transparent mt-1">
+                                0%
+                            </div>
+                        </div>
+                        <div class="h-12 w-px bg-white/10"></div>
+                        <div class="text-center">
+                            <div class="text-xs uppercase tracking-wider text-slate-400 font-semibold">Total XP</div>
+                            <div id="res-total-xp" class="font-display text-2xl sm:text-3xl font-bold text-indigo-300 mt-1">
+                                0 XP
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skill Category Breakdown -->
+                <div class="py-8 border-b border-white/10">
+                    <h2 class="font-display text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-simple text-indigo-400"></i> Competency Breakdown
+                    </h2>
+                    <div id="res-competencies" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Competency progress bars injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Badges Earned -->
+                <div class="py-8 border-b border-white/10">
+                    <h2 class="font-display text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-award text-amber-400"></i> Badges Unlocked
+                    </h2>
+                    <div id="res-badges" class="flex flex-wrap gap-3">
+                        <!-- Badges injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Mission-by-Mission Coaching & Transcript Review -->
+                <div class="py-8">
+                    <h2 class="font-display text-lg font-bold text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-clipboard-check text-teal-400"></i> Mission Coaching & Submitted Responses
+                    </h2>
+                    <div id="res-mission-review" class="space-y-4">
+                        <!-- Detailed breakdown injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Action Buttons for Trainer Submission -->
+                <div class="pt-4 flex flex-wrap items-center justify-between gap-4">
+                    <button id="btn-restart" type="button"
+                        class="px-5 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-sm border border-white/10 transition flex items-center gap-2 cursor-pointer">
+                        <i class="fa-solid fa-rotate-right"></i> Retake Assessment
+                    </button>
+
+                    <div class="flex flex-wrap items-center gap-3">
+                        <button id="btn-copy-report" type="button"
+                            class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 text-white font-display font-bold text-sm shadow-lg btn-glow flex items-center gap-2 cursor-pointer">
+                            <i class="fa-solid fa-copy"></i> Copy Scorecard for Trainer
+                        </button>
+                        <button id="btn-download-report" type="button"
+                            class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-slate-950 font-display font-bold text-sm shadow-lg btn-glow flex items-center gap-2 cursor-pointer">
+                            <i class="fa-solid fa-download"></i> Download Report (.txt)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Hidden textarea for reliable clipboard copy inside iframes -->
+    <textarea id="clipboard-helper" class="sr-only" aria-hidden="true"></textarea>
+
+    <!-- ========================================== -->
+    <!-- JAVASCRIPT GAME ENGINE & QA EVALUATOR      -->
+    <!-- ========================================== -->
+    <script>
+        /**
+         * Support Quest: The Empathy & Ownership Arena
+         * Complete Gamified Assessment Engine for 3rd-Party Tech & Non-Tech Support Experts
+         */
+
+        // --- Game State ---
+        const gameState = {
+            agentName: '',
+            agentEmail: '',
+            currentMissionIndex: 0,
+            xp: 0,
+            streak: 0,
+            maxStreak: 0,
+            missionResults: [], // Stores score, maxScore, badge, feedback, userResponse per mission
+            competencies: {
+                'Empathy & Ownership': { earned: 0, max: 0 },
+                '3rd-Party OEM Boundaries': { earned: 0, max: 0 },
+                'Delivering Unfavorable News': { earned: 0, max: 0 },
+                'Positive Scripting & Courtesy': { earned: 0, max: 0 },
+                'Probing & Clarity': { earned: 0, max: 0 }
+            }
+        };
+
+        // --- Mission Definitions ---
+        const missions = [
+            {
+                id: 'm1',
+                number: 1,
+                title: 'The Frustrated Repeater',
+                category: 'Empathy & Ownership',
+                badgeName: 'Empathy Ace',
+                badgeIcon: 'fa-heart-pulse',
+                badgeColor: 'from-rose-500 to-orange-500',
+                type: 'choice-plus-draft',
+                maxPoints: 100,
+                contextTag: 'High-Emotion Escalation • Tech & Account Sync',
+                scenarioDesc: 'A customer reaches out after speaking with two previous agents about a recurring cloud-sync failure on their workstation. They are visibly upset and feel their time is being wasted.',
+                customerMessage: '"I have already followed all the troubleshooting steps shared with me earlier, and nothing has worked! Why are you making me repeat everything all over again?"',
+                mcqPrompt: 'Step 1: Choose the strongest opening mindset before drafting your reply:',
+                options: [
+                    {
+                        id: 'a',
+                        text: '"I understand you are frustrated, but our standard policy requires us to verify basic steps from the beginning on every new chat."',
+                        points: 10,
+                        isBest: false,
+                        why: 'Hiding behind "policy" sounds robotic and invalidates the customer\'s prior effort.'
+                    },
+                    {
+                        id: 'b',
+                        text: '"I completely understand how exhausting it is to go through the same steps repeatedly. I have reviewed your previous case notes so you will not have to start from scratch, and I will take ownership of exploring our next-level options with you."',
+                        points: 40,
+                        isBest: true,
+                        why: 'Validates emotion, proves continuity by reviewing notes, takes personal ownership, and skips redundant steps.'
+                    },
+                    {
+                        id: 'c',
+                        text: '"Sorry about that! Could you tell me which steps you already tried so I can see what the last agent missed?"',
+                        points: 20,
+                        isBest: false,
+                        why: 'Asking them to list what they already did still forces them to repeat themselves, and subtly blames the previous agent.'
+                    }
+                ],
+                draftPrompt: 'Step 2: Now write the complete response you would send to the customer (acknowledge their frustration, take ownership, and propose moving directly to advanced checks without repeating steps):',
+                draftPlaceholder: 'Type your customer-ready response here... (Tip: Use courteous phrasing like "would", "could", or "may")',
+                modelAnswer: 'I completely understand how frustrating it is to spend your valuable time repeating steps that have not resolved this for you. I have reviewed the notes from your previous session so we do not go over the same ground again. I am taking ownership of this with you today—may I share one targeted diagnostic check that looks deeper into your sync logs so we can get this moving forward?',
+                rubric: {
+                    empathy: ['understand', 'frustrat', 'exhaust', 'valuable time', 'hear you', 'appreciate your patience', 'apolog'],
+                    ownership: ['notes', 'history', 'previous', 'skip', 'not repeat', 'won\'t repeat', 'will not repeat', 'ownership', 'with you', 'check', 'review'],
+                    modalCourtesy: ['would', 'could', 'may', 'let\'s', 'let us', 'allow me'],
+                    forbidden: ['calm down', 'policy requires', 'you have to', 'you must', 'please kindly']
+                }
+            },
+            {
+                id: 'm2',
+                number: 2,
+                title: 'The 3rd-Party OEM Hand-Off',
+                category: '3rd-Party OEM Boundaries',
+                badgeName: 'Boundary Navigator',
+                badgeIcon: 'fa-handshake-angle',
+                badgeColor: 'from-teal-500 to-cyan-500',
+                type: 'choice-plus-draft',
+                maxPoints: 100,
+                contextTag: 'Non-Affiliated OEM Boundary • Hardware / OS Lock',
+                scenarioDesc: 'You work as a Third-Party Technical Support Expert. Diagnostics confirm the customer\'s laptop has a physical motherboard/battery controller failure and a BitLocker hardware-bound recovery lock that only the Original Equipment Manufacturer (OEM — e.g., Dell/HP/Apple) can service under warranty. Your organization has NO direct affiliation or backend portal with the OEM.',
+                customerMessage: '"Can you just unlock my device or replace the faulty part from your end right now? Why do I have to contact the manufacturer myself?"',
+                mcqPrompt: 'Step 1: How should a Third-Party Expert frame an unaffiliated OEM hand-off?',
+                options: [
+                    {
+                        id: 'a',
+                        text: '"That is a hardware issue and we are just third-party support, so it is not our department. You have to call the manufacturer."',
+                        points: 5,
+                        isBest: false,
+                        why: 'Uses negative scripting ("not our department", "you have to") and sounds dismissive.'
+                    },
+                    {
+                        id: 'b',
+                        text: '"Because this involves a physical hardware component and manufacturer-level security encryption, only the device manufacturer has the authorized tools to unlock or service it safely. While we operate independently from them, I can provide our diagnostic summary and guide you on the exact details to share so your call with them goes smoothly."',
+                        points: 40,
+                        isBest: true,
+                        why: 'Explains the "why" clearly, maintains transparency about independent status without sounding helpless, and adds value via a warm hand-off summary.'
+                    },
+                    {
+                        id: 'c',
+                        text: '"I will transfer your ticket directly to the manufacturer\'s warranty team and they will fix it for you today."',
+                        points: 10,
+                        isBest: false,
+                        why: 'Makes a false promise! As a non-affiliated 3rd-party team, you cannot directly transfer tickets or guarantee OEM resolution.'
+                    }
+                ],
+                draftPrompt: 'Step 2: Draft your response explaining why direct OEM intervention is needed (without saying "not my department" or making false promises), and offer a helpful warm hand-off:',
+                draftPlaceholder: 'Draft a clear, supportive OEM hand-off message...',
+                modelAnswer: 'I understand it would be much more convenient to have this resolved in one place. Because our diagnostics confirm a physical hardware component fault alongside manufacturer-level security encryption, only the Original Equipment Manufacturer holds the authorized tools to safely unlock and service the device without risking your warranty. While we are an independent support team and do not have direct access to their internal systems, I would be glad to summarize our findings and share their direct support contact details so you can get this resolved quickly without repeating troubleshooting.',
+                rubric: {
+                    empathy: ['understand', 'convenient', 'appreciate', 'glad to', 'happy to', 'help'],
+                    ownership: ['manufacturer', 'oem', 'hardware', 'authorized', 'warranty', 'security', 'independent', 'direct', 'summary', 'findings', 'details'],
+                    modalCourtesy: ['would', 'could', 'may', 'can share', 'allow me'],
+                    forbidden: ['not my department', 'not our department', 'nothing i can do', 'can\'t do anything', 'you have to', 'please kindly']
+                }
+            },
+            {
+                id: 'm3',
+                number: 3,
+                title: 'The Unresolvable Dead-End',
+                category: 'Delivering Unfavorable News',
+                badgeName: 'Candor & Care Master',
+                badgeIcon: 'fa-compass',
+                badgeColor: 'from-indigo-500 to-purple-500',
+                type: 'choice-plus-draft',
+                maxPoints: 100,
+                contextTag: 'Unfavorable News • Legacy Deprecation / Policy Limit',
+                scenarioDesc: 'A customer wants to install and activate a critical business plugin on an end-of-life legacy operating system (e.g., Windows 7 / macOS High Sierra). The software vendor permanently discontinued server support and security certificates for that OS, meaning the issue CANNOT be resolved on their current setup.',
+                customerMessage: '"I really need this software running on my current computer today for my client work. Surely there is a workaround or patch you can apply to make it work?"',
+                mcqPrompt: 'Step 1: What is the best practice when delivering an unresolvable technical limitation?',
+                options: [
+                    {
+                        id: 'a',
+                        text: '"Be transparent early with empathy, clearly explain the technical reason why it cannot work on the legacy OS, avoid false hope, and offer practical alternative options (like web-based access or upgrading)."',
+                        points: 40,
+                        isBest: true,
+                        why: 'Cushions the unfavorable news, gives an honest technical reason, protects trust by avoiding false hope, and pivots to viable alternatives.'
+                    },
+                    {
+                        id: 'b',
+                        text: '"Let me try a few registry tweaks and unofficial patches—it might work, though I cannot be sure."',
+                        points: 10,
+                        isBest: false,
+                        why: 'Creates false hope and risks breaking the customer\'s system with unsupported hacks.'
+                    },
+                    {
+                        id: 'c',
+                        text: '"No, that operating system is obsolete and unsupported. You need to buy a new computer if you want to use this app."',
+                        points: 5,
+                        isBest: false,
+                        why: 'Blunt, lacks empathy, and uses harsh directive language ("you need to").'
+                    }
+                ],
+                draftPrompt: 'Step 2: Write your response delivering this unfavorable news empathetically, clearly explaining why it cannot be resolved on their current OS, and offering constructive alternatives:',
+                draftPlaceholder: 'Deliver the unfavorable news with warmth, clarity, and helpful alternatives...',
+                modelAnswer: 'I understand how critical this software is for your client work today, and I wish I could activate it directly on your current setup. However, the software provider has permanently retired security certificates for this operating system version, which means the application can no longer connect or run on it—even with manual patches. While we are unable to install it locally on this machine, could we explore accessing their cloud web portal via a modern browser, or check if a secondary updated device is available so you can still meet your deadline today?',
+                rubric: {
+                    empathy: ['understand', 'critical', 'important', 'wish i could', 'appreciate', 'deadline', 'work'],
+                    ownership: ['retired', 'discontinued', 'unsupported', 'security', 'certificate', 'unable', 'cannot', 'alternative', 'option', 'web', 'browser', 'upgrade', 'another device'],
+                    modalCourtesy: ['would', 'could', 'may', 'might', 'explore'],
+                    forbidden: ['obsolete', 'your fault', 'you must', 'you need to buy', 'please kindly']
+                }
+            },
+            {
+                id: 'm4',
+                number: 4,
+                title: 'Positive Scripting Makeover',
+                category: 'Positive Scripting & Courtesy',
+                badgeName: 'Positive Scripter',
+                badgeIcon: 'fa-wand-magic-sparkles',
+                badgeColor: 'from-amber-500 to-pink-500',
+                type: 'scripting-transform',
+                maxPoints: 100,
+                contextTag: 'Tone & Modal Verb Mastery • Tech & Billing Scenarios',
+                scenarioDesc: 'Robotic or demanding phrasing creates friction even when the solution is right. Select the best customer-friendly, modal-verb-enriched ("would", "could", "may") rewrite for each of the 4 harsh statements below.',
+                items: [
+                    {
+                        id: 's1',
+                        harsh: '"You need to restart your computer right now."',
+                        choices: [
+                            { text: '"Restart your computer now so the update finishes."', points: 5, feedback: 'Still sounds like a command rather than a collaborative request.' },
+                            { text: '"Could you save any open work and restart your computer so the changes take effect?"', points: 25, feedback: 'Polite modal verb ("Could you"), protects unsaved work, and explains the benefit!' },
+                            { text: '"Please kindly restart your computer immediately."', points: 10, feedback: 'Avoid pairing "please" and "kindly" together, and avoid sounding urgent/demanding.' }
+                        ]
+                    },
+                    {
+                        id: 's2',
+                        harsh: '"I can\'t do anything about your refund. That\'s not my department."',
+                        choices: [
+                            { text: '"While I am unable to process refunds directly from the technical desk, I would be glad to connect you with our Billing team who can review your request."', points: 25, feedback: 'Focuses on what you CAN do, removes blame, and uses warm modal phrasing ("would be glad").' },
+                            { text: '"Refunds are handled by Billing, so you will have to contact them instead."', points: 10, feedback: 'Better than "not my department", but "you will have to" still puts the burden abruptly on the customer.' },
+                            { text: '"Sorry, technical support has zero access to billing."', points: 5, feedback: 'Dead-end statement with no next step offered.' }
+                        ]
+                    },
+                    {
+                        id: 's3',
+                        harsh: '"Give me your registered email address."',
+                        choices: [
+                            { text: '"Send me your email address to check your account."', points: 5, feedback: 'Imperative phrasing feels abrupt.' },
+                            { text: '"May I have your registered email address so I can locate your subscription details?"', points: 25, feedback: 'Courteous ("May I") and clearly states the purpose ("so I can locate...").' },
+                            { text: '"Please kindly provide your email ID right away."', points: 10, feedback: 'Redundant "please kindly" and slightly rushed tone.' }
+                        ]
+                    },
+                    {
+                        id: 's4',
+                        harsh: '"It should be right there on your screen. Check properly."',
+                        choices: [
+                            { text: '"Look again under Settings; everyone else has it there."', points: 0, feedback: 'Dismissive and assumes the customer made a mistake.' },
+                            { text: '"Since menu layouts can vary across software versions, could you share what options you currently see on your screen?"', points: 25, feedback: 'Zero assumptions! Validates UI differences and asks a smart probing question.' },
+                            { text: '"Are you sure you opened the right Settings menu?"', points: 10, feedback: 'Subtly questions the customer\'s competence.' }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: 'm5',
+                number: 5,
+                title: 'Chat Rescue: Spot & Fix QA Gaps',
+                category: 'Probing & Clarity',
+                badgeName: 'QA Guardian',
+                badgeIcon: 'fa-shield-cat',
+                badgeColor: 'from-emerald-500 to-teal-500',
+                type: 'chat-rescue',
+                maxPoints: 100,
+                contextTag: 'Transcript Audit • Assumptions, Tone & Closing',
+                scenarioDesc: 'Audit the broken support transcript below. Identify the 3 critical communication failures, then select the QA-compliant response sequence to rescue the interaction.',
+                transcript: [
+                    { sender: 'Expert', text: 'Go to Settings and click Security & Password.' },
+                    { sender: 'Customer', text: 'I am looking at Settings right now, and I don\'t see that option.' },
+                    { sender: 'Expert', text: 'It should be there. Check properly.' },
+                    { sender: 'Customer', text: 'I really don\'t see it anywhere on my screen.' },
+                    { sender: 'Expert', text: 'Okay.' }
+                ],
+                gapsQuestion: 'Step 1: Select ALL THREE communication gaps present in the transcript above:',
+                gapsOptions: [
+                    { id: 'g1', text: 'Assuming UI layout & blaming the customer ("It should be there. Check properly.")', correct: true },
+                    { id: 'g2', text: 'Zero probing questions to check OS version, app edition, or screen view', correct: true },
+                    { id: 'g3', text: 'Abrupt, unhelpful dead-end reply ("Okay.") with no guidance or proper closing', correct: true },
+                    { id: 'g4', text: 'Over-apologizing and offering an unauthorized billing credit', correct: false }
+                ],
+                rescueQuestion: 'Step 2: Once the issue is finally resolved after proper probing, which closing message meets 100% QA standards?',
+                rescueOptions: [
+                    {
+                        id: 'r1',
+                        text: '"Great, glad it\'s fixed. Bye!"',
+                        points: 10,
+                        isBest: false,
+                        why: 'Too abrupt; fails to verify if additional assistance is needed.'
+                    },
+                    {
+                        id: 'r2',
+                        text: '"I am glad we could locate that setting and get your password updated! Before we wrap up, is there anything else I could assist you with today? Thank you for reaching out, and have a wonderful day ahead."',
+                        points: 50,
+                        isBest: true,
+                        why: 'Acknowledges resolution warmly, offers further assistance using courteous phrasing ("could assist"), and closes professionally.'
+                    },
+                    {
+                        id: 'r3',
+                        text: '"Issue resolved. Please kindly close the chat window on your end now."',
+                        points: 15,
+                        isBest: false,
+                        why: 'Robotic tone and uses adjacent "please kindly".'
+                    }
+                ]
+            }
+        ];
+
+        // --- Utility: Toast Notification ---
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast-box');
+            const msgEl = document.getElementById('toast-message');
+            const iconEl = document.getElementById('toast-icon');
+
+            msgEl.textContent = message;
+            if (type === 'error') {
+                iconEl.className = 'fa-solid fa-circle-exclamation text-rose-400 text-xl';
+                toast.firstElementChild.classList.remove('border-teal-400');
+                toast.firstElementChild.classList.add('border-rose-400');
+            } else {
+                iconEl.className = 'fa-solid fa-circle-check text-teal-400 text-xl';
+                toast.firstElementChild.classList.remove('border-rose-400');
+                toast.firstElementChild.classList.add('border-teal-400');
+            }
+
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3200);
+        }
+
+        // --- Utility: Update Top HUD ---
+        function updateHUD() {
+            document.getElementById('hud-agent-name').textContent = gameState.agentName;
+            document.getElementById('hud-xp').textContent = `${gameState.xp} XP`;
+            document.getElementById('hud-streak').textContent = gameState.streak;
+
+            const pct = Math.round((gameState.currentMissionIndex / missions.length) * 100);
+            document.getElementById('global-progress-bar').style.width = `${pct}%`;
+        }
+
+        // --- Utility: Render Stepper ---
+        function renderStepper() {
+            const stepper = document.getElementById('mission-stepper');
+            stepper.innerHTML = missions.map((m, idx) => {
+                const isDone = idx < gameState.currentMissionIndex;
+                const isCurrent = idx === gameState.currentMissionIndex;
+                let pillClass = 'bg-slate-800/70 text-slate-400 border-white/10';
+                let icon = `<span class="w-5 h-5 rounded-full bg-slate-700 text-xs flex items-center justify-center">${m.number}</span>`;
+
+                if (isDone) {
+                    pillClass = 'bg-emerald-500/20 text-emerald-300 border-emerald-400/40';
+                    icon = `<i class="fa-solid fa-circle-check text-emerald-400"></i>`;
+                } else if (isCurrent) {
+                    pillClass = 'bg-indigo-500/30 text-white border-indigo-400 shadow-md shadow-indigo-500/20';
+                    icon = `<span class="w-5 h-5 rounded-full bg-indigo-500 text-white text-xs font-bold flex items-center justify-center">${m.number}</span>`;
+                }
+
+                return `
+                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-semibold transition ${pillClass}">
+                        ${icon}
+                        <span class="hidden sm:inline">${m.title}</span>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // --- Screen 1: Agent Registration Handler ---
+        document.getElementById('agent-setup-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nameInput = document.getElementById('agent-name').value.trim();
+            const emailInput = document.getElementById('agent-email').value.trim();
+
+            if (!nameInput || !emailInput) {
+                showToast('Please enter both your full name and email address to begin.', 'error');
+                return;
+            }
+
+            gameState.agentName = nameInput;
+            gameState.agentEmail = emailInput;
+            gameState.currentMissionIndex = 0;
+            gameState.xp = 0;
+            gameState.streak = 0;
+            gameState.maxStreak = 0;
+            gameState.missionResults = [];
+
+            // Reset competencies
+            Object.keys(gameState.competencies).forEach(k => {
+                gameState.competencies[k] = { earned: 0, max: 0 };
+            });
+
+            document.getElementById('screen-welcome').classList.add('hidden');
+            document.getElementById('hud-stats').classList.remove('hidden');
+            document.getElementById('progress-container').classList.remove('hidden');
+            document.getElementById('screen-mission').classList.remove('hidden');
+
+            updateHUD();
+            renderCurrentMission();
+            showToast(`Welcome aboard, ${gameState.agentName}! Mission 1 unlocked.`);
+        });
+
+        // --- Natural Language QA Evaluator for Open-Ended Drafts ---
+        function evaluateDraftResponse(text, rubric) {
+            const clean = text.toLowerCase().trim();
+            const words = clean.split(/\s+/).filter(Boolean);
+            let score = 0;
+            const strengths = [];
+            const coaching = [];
+
+            // 1. Length & Completeness check (max 15 pts)
+            if (words.length >= 18) {
+                score += 15;
+            } else if (words.length >= 10) {
+                score += 8;
+                coaching.push('Expand your response slightly to provide fuller reassurance and clear next steps.');
+            } else {
+                score += 2;
+                coaching.push('Your response is too brief—customers need warmth, context, and actionable guidance.');
+            }
+
+            // 2. Empathy & Validation check (max 15 pts)
+            const hasEmpathy = rubric.empathy.some(kw => clean.includes(kw));
+            if (hasEmpathy) {
+                score += 15;
+                strengths.push('Acknowledged the customer\'s situation with genuine empathy.');
+            } else {
+                coaching.push('Open by validating the customer\'s frustration or urgency before explaining technical constraints.');
+            }
+
+            // 3. Ownership / Domain Accuracy check (max 20 pts)
+            const matchedDomain = rubric.ownership.filter(kw => clean.includes(kw));
+            if (matchedDomain.length >= 2) {
+                score += 20;
+                strengths.push('Demonstrated strong ownership and clear situational explanation.');
+            } else if (matchedDomain.length === 1) {
+                score += 12;
+                coaching.push('Add slightly clearer context on the exact reason and next step.');
+            } else {
+                score += 3;
+                coaching.push('Ensure you clearly address the root boundary/next step without leaving the customer guessing.');
+            }
+
+            // 4. Modal Courtesy ("would", "could", "may") & No Redundant "please kindly" (max 10 pts)
+            const hasModal = rubric.modalCourtesy.some(kw => clean.includes(kw));
+            const hasForbidden = rubric.forbidden.some(kw => clean.includes(kw));
+
+            if (hasModal && !hasForbidden) {
+                score += 10;
+                strengths.push('Used courteous modal phrasing ("would", "could", "may") cleanly.');
+            } else if (hasForbidden) {
+                score = Math.max(0, score - 5);
+                coaching.push('Avoid rigid/negative phrases ("you have to", "not my department") or pairing "please" and "kindly" together.');
+            } else {
+                score += 4;
+                coaching.push('Incorporate polite modal verbs like "would", "could", or "may" to soften requests.');
+            }
+
+            return {
+                points: Math.min(60, score),
+                strengths,
+                coaching
+            };
+        }
+
+        // --- Render Active Mission ---
+        function renderCurrentMission() {
+            renderStepper();
+            updateHUD();
+            const mission = missions[gameState.currentMissionIndex];
+            const container = document.getElementById('mission-container');
+
+            // Common Mission Header
+            let html = `
+                <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-5 mb-6">
+                    <div>
+                        <span class="inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 mb-2">
+                            Mission ${mission.number} of ${missions.length} • ${mission.contextTag}
+                        </span>
+                        <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-white">${mission.title}</h2>
+                    </div>
+                    <div class="glass-pill px-4 py-2 rounded-2xl text-right">
+                        <div class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Skill Focus</div>
+                        <div class="text-sm font-bold text-teal-300">${mission.category}</div>
+                    </div>
+                </div>
+
+                <!-- Scenario Briefing Box -->
+                <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-white/10 mb-6 space-y-3">
+                    <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300">
+                        <i class="fa-solid fa-circle-info"></i> Situation Briefing
+                    </div>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">${mission.scenarioDesc}</p>
+                    ${mission.customerMessage ? `
+                        <div class="mt-3 p-4 rounded-xl bg-gradient-to-r from-rose-500/15 to-amber-500/10 border-l-4 border-rose-400">
+                            <div class="text-xs font-bold text-rose-300 uppercase tracking-wider mb-1">
+                                <i class="fa-solid fa-comment-dots mr-1"></i> Incoming Customer Message
+                            </div>
+                            <p class="text-white font-medium italic text-sm sm:text-base">${mission.customerMessage}</p>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+
+            // Render Mission Type Specific UI
+            if (mission.type === 'choice-plus-draft') {
+                html += `
+                    <form id="mission-form" class="space-y-6">
+                        <!-- Step 1: Multiple Choice Strategy -->
+                        <div>
+                            <label class="block font-display font-bold text-white text-base mb-3">${mission.mcqPrompt}</label>
+                            <div class="space-y-3">
+                                ${mission.options.map((opt) => `
+                                    <label class="option-card block p-4 rounded-2xl bg-slate-800/60 border border-white/10 cursor-pointer">
+                                        <div class="flex items-start gap-3.5">
+                                            <input type="radio" name="mcq_choice" value="${opt.id}" required class="mt-1 w-4 h-4 text-indigo-500 focus:ring-indigo-500 bg-slate-900 border-slate-600">
+                                            <span class="text-sm sm:text-base text-slate-200 leading-relaxed">${opt.text}</span>
+                                        </div>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Live Response Drafting -->
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <label for="draft-input" class="font-display font-bold text-white text-base">${mission.draftPrompt}</label>
+                                <span id="word-counter" class="text-xs text-slate-400 font-medium">0 words</span>
+                            </div>
+                            <textarea id="draft-input" rows="4" required placeholder="${mission.draftPlaceholder}"
+                                class="w-full p-4 rounded-2xl bg-slate-950/90 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-teal-400 focus:ring-2 focus:ring-teal-500/20 text-sm sm:text-base leading-relaxed transition"></textarea>
+                            <div class="flex flex-wrap items-center justify-between gap-2 mt-2 text-xs text-slate-400">
+                                <span><i class="fa-solid fa-sparkles text-teal-400 mr-1"></i> Evaluated for Empathy, Ownership, Boundaries & Modal Courtesy ("would", "could", "may")</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex justify-end">
+                            <button type="submit" id="btn-submit-mission"
+                                class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 to-teal-500 hover:from-indigo-400 hover:to-teal-400 text-white font-display font-bold text-base shadow-lg btn-glow flex items-center gap-2 cursor-pointer">
+                                <span>Evaluate My Response</span>
+                                <i class="fa-solid fa-check-double"></i>
+                            </button>
+                        </div>
+                    </form>
+                `;
+            } else if (mission.type === 'scripting-transform') {
+                html += `
+                    <form id="mission-form" class="space-y-6">
+                        ${mission.items.map((item, idx) => `
+                            <div class="p-5 rounded-2xl bg-slate-800/50 border border-white/10 space-y-3">
+                                <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-300">
+                                    <span class="px-2 py-0.5 rounded bg-rose-500/20 border border-rose-400/30">Statement #${idx + 1}</span>
+                                    <span>Harsh / Robotic Original:</span>
+                                </div>
+                                <p class="text-base font-semibold text-rose-200 line-through decoration-rose-400/70">${item.harsh}</p>
+                                <div class="text-xs font-semibold text-teal-300 pt-1">Select the best customer-first positive rewrite:</div>
+                                <div class="space-y-2.5">
+                                    ${item.choices.map((ch, cIdx) => `
+                                        <label class="option-card block p-3.5 rounded-xl bg-slate-900/80 border border-white/10 cursor-pointer">
+                                            <div class="flex items-start gap-3">
+                                                <input type="radio" name="script_${item.id}" value="${cIdx}" required class="mt-1 w-4 h-4 text-teal-500 bg-slate-900 border-slate-600">
+                                                <span class="text-sm text-slate-200">${ch.text}</span>
+                                            </div>
+                                        </label>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+
+                        <div class="pt-2 flex justify-end">
+                            <button type="submit" id="btn-submit-mission"
+                                class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-amber-500 to-pink-500 hover:from-amber-400 hover:to-pink-400 text-white font-display font-bold text-base shadow-lg btn-glow flex items-center gap-2 cursor-pointer">
+                                <span>Verify Positive Scripts</span>
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            </button>
+                        </div>
+                    </form>
+                `;
+            } else if (mission.type === 'chat-rescue') {
+                html += `
+                    <!-- Broken Chat Transcript Visual -->
+                    <div class="p-5 rounded-2xl bg-slate-950/90 border border-slate-800 mb-6 space-y-3">
+                        <div class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2 flex items-center justify-between">
+                            <span><i class="fa-solid fa-terminal text-rose-400 mr-1.5"></i> Broken Chat Transcript</span>
+                            <span class="text-rose-400">QA Audit Required</span>
+                        </div>
+                        ${mission.transcript.map(msg => `
+                            <div class="flex flex-col ${msg.sender === 'Expert' ? 'items-end' : 'items-start'}">
+                                <span class="text-[11px] font-semibold text-slate-400 mb-1">${msg.sender}</span>
+                                <div class="max-w-md px-4 py-2.5 rounded-2xl text-sm ${
+                                    msg.sender === 'Expert'
+                                    ? 'bg-rose-950/70 border border-rose-500/30 text-rose-100 rounded-br-none'
+                                    : 'bg-slate-800 border border-white/10 text-slate-200 rounded-bl-none'
+                                }">
+                                    ${msg.text}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <form id="mission-form" class="space-y-6">
+                        <!-- Step 1: Multi-select QA Gaps -->
+                        <div>
+                            <label class="block font-display font-bold text-white text-base mb-3">${mission.gapsQuestion}</label>
+                            <div class="space-y-2.5">
+                                ${mission.gapsOptions.map(g => `
+                                    <label class="option-card block p-3.5 rounded-xl bg-slate-800/60 border border-white/10 cursor-pointer">
+                                        <div class="flex items-start gap-3">
+                                            <input type="checkbox" name="qa_gaps" value="${g.id}" class="mt-1 w-4 h-4 rounded text-emerald-500 bg-slate-900 border-slate-600">
+                                            <span class="text-sm sm:text-base text-slate-200">${g.text}</span>
+                                        </div>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Effective Closing -->
+                        <div>
+                            <label class="block font-display font-bold text-white text-base mb-3">${mission.rescueQuestion}</label>
+                            <div class="space-y-2.5">
+                                ${mission.rescueOptions.map(r => `
+                                    <label class="option-card block p-3.5 rounded-xl bg-slate-800/60 border border-white/10 cursor-pointer">
+                                        <div class="flex items-start gap-3">
+                                            <input type="radio" name="rescue_closing" value="${r.id}" required class="mt-1 w-4 h-4 text-emerald-500 bg-slate-900 border-slate-600">
+                                            <span class="text-sm sm:text-base text-slate-200">${r.text}</span>
+                                        </div>
+                                    </label>
+                                `).join('')}
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex justify-end">
+                            <button type="submit" id="btn-submit-mission"
+                                class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-display font-bold text-base shadow-lg btn-glow flex items-center gap-2 cursor-pointer">
+                                <span>Complete Final QA Audit</span>
+                                <i class="fa-solid fa-flag-checkered"></i>
+                            </button>
+                        </div>
+                    </form>
+                `;
+            }
+
+            // Placeholder for Instant Feedback Panel (revealed upon submission)
+            html += `<div id="mission-feedback-panel" class="hidden mt-8 pt-6 border-t border-white/15 slide-in"></div>`;
+
+            container.innerHTML = html;
+
+            // Attach live word counter if draft textarea exists
+            const draftEl = document.getElementById('draft-input');
+            if (draftEl) {
+                draftEl.addEventListener('input', () => {
+                    const count = draftEl.value.trim().split(/\s+/).filter(Boolean).length;
+                    document.getElementById('word-counter').textContent = `${count} words`;
+                });
+            }
+
+            // Attach form submit listener
+            document.getElementById('mission-form').addEventListener('submit', handleMissionSubmit);
+        }
+
+        // --- Handle Mission Submission & Instant QA Feedback ---
+        function handleMissionSubmit(e) {
+            e.preventDefault();
+            const mission = missions[gameState.currentMissionIndex];
+            let earnedPoints = 0;
+            let feedbackHTML = '';
+            let userSummaryText = '';
+            let badgeUnlocked = false;
+
+            if (mission.type === 'choice-plus-draft') {
+                const selectedOptId = document.querySelector('input[name="mcq_choice"]:checked')?.value;
+                const draftText = document.getElementById('draft-input').value.trim();
+
+                if (!selectedOptId || draftText.length < 15) {
+                    showToast('Please select an approach and write a complete customer response.', 'error');
+                    return;
+                }
+
+                const chosenOpt = mission.options.find(o => o.id === selectedOptId);
+                const draftEval = evaluateDraftResponse(draftText, mission.rubric);
+
+                earnedPoints = chosenOpt.points + draftEval.points;
+                userSummaryText = draftText;
+                badgeUnlocked = earnedPoints >= 75;
+
+                feedbackHTML = `
+                    <div class="rounded-2xl p-6 bg-slate-900/95 border ${earnedPoints >= 75 ? 'border-emerald-400/50' : 'border-amber-400/50'} space-y-5">
+                        <div class="flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br ${mission.badgeColor} flex items-center justify-center text-white text-xl shadow-lg">
+                                    <i class="fa-solid ${mission.badgeIcon}"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold uppercase tracking-wider text-slate-400">QA Evaluation Complete</div>
+                                    <h3 class="font-display text-xl font-extrabold text-white">
+                                        +${earnedPoints} XP ${badgeUnlocked ? `• 🏆 "${mission.badgeName}" Unlocked!` : ''}
+                                    </h3>
+                                </div>
+                            </div>
+                            <span class="px-3.5 py-1.5 rounded-full text-xs font-bold ${earnedPoints >= 75 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'}">
+                                Score: ${earnedPoints} / ${mission.maxPoints}
+                            </span>
+                        </div>
+
+                        <!-- Strategy Choice Feedback -->
+                        <div class="p-4 rounded-xl bg-slate-800/70 border border-white/5 text-sm">
+                            <div class="font-bold ${chosenOpt.isBest ? 'text-emerald-300' : 'text-amber-300'} mb-1">
+                                <i class="fa-solid ${chosenOpt.isBest ? 'fa-circle-check' : 'fa-circle-info'} mr-1"></i>
+                                Strategy Choice (+${chosenOpt.points}/40 pts):
+                            </div>
+                            <p class="text-slate-300">${chosenOpt.why}</p>
+                        </div>
+
+                        <!-- Draft Analysis -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div class="p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/20">
+                                <div class="font-bold text-emerald-300 mb-2"><i class="fa-solid fa-thumbs-up mr-1"></i> What Worked Well</div>
+                                <ul class="list-disc list-inside space-y-1 text-slate-300 text-xs">
+                                    ${draftEval.strengths.length ? draftEval.strengths.map(s => `<li>${s}</li>`).join('') : '<li>Attempted a polite reply—review the gold-standard example to elevate ownership.</li>'}
+                                </ul>
+                            </div>
+                            <div class="p-4 rounded-xl bg-amber-950/30 border border-amber-500/20">
+                                <div class="font-bold text-amber-300 mb-2"><i class="fa-solid fa-lightbulb mr-1"></i> QA Coaching Tips</div>
+                                <ul class="list-disc list-inside space-y-1 text-slate-300 text-xs">
+                                    ${draftEval.coaching.length ? draftEval.coaching.map(c => `<li>${c}</li>`).join('') : '<li>Spot-on tone, clarity, and customer ownership!</li>'}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Gold Standard Benchmark -->
+                        <div class="p-4 rounded-xl bg-indigo-950/50 border border-indigo-400/30">
+                            <div class="text-xs font-bold uppercase tracking-wider text-indigo-300 mb-1">
+                                <i class="fa-solid fa-star mr-1"></i> QA Gold-Standard Benchmark Response
+                            </div>
+                            <p class="text-sm text-indigo-100 leading-relaxed">"${mission.modelAnswer}"</p>
+                        </div>
+                    </div>
+                `;
+            } else if (mission.type === 'scripting-transform') {
+                let breakdownList = [];
+                mission.items.forEach(item => {
+                    const chosenIdx = parseInt(document.querySelector(`input[name="script_${item.id}"]:checked`).value, 10);
+                    const chosenObj = item.choices[chosenIdx];
+                    earnedPoints += chosenObj.points;
+                    breakdownList.push({
+                        harsh: item.harsh,
+                        chosen: chosenObj.text,
+                        points: chosenObj.points,
+                        feedback: chosenObj.feedback
+                    });
+                });
+
+                userSummaryText = breakdownList.map((b, i) => `Q${i + 1}: ${b.chosen}`).join(' | ');
+                badgeUnlocked = earnedPoints >= 75;
+
+                feedbackHTML = `
+                    <div class="rounded-2xl p-6 bg-slate-900/95 border ${earnedPoints >= 75 ? 'border-emerald-400/50' : 'border-amber-400/50'} space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br ${mission.badgeColor} flex items-center justify-center text-white text-xl shadow-lg">
+                                    <i class="fa-solid ${mission.badgeIcon}"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Positive Scripting Audit</div>
+                                    <h3 class="font-display text-xl font-extrabold text-white">
+                                        +${earnedPoints} XP ${badgeUnlocked ? `• 🏆 "${mission.badgeName}" Unlocked!` : ''}
+                                    </h3>
+                                </div>
+                            </div>
+                            <span class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-300">
+                                Score: ${earnedPoints} / ${mission.maxPoints}
+                            </span>
+                        </div>
+
+                        <div class="space-y-2.5">
+                            ${breakdownList.map((b, i) => `
+                                <div class="p-3.5 rounded-xl bg-slate-800/70 border border-white/5 text-xs sm:text-sm">
+                                    <div class="flex items-center justify-between font-bold ${b.points === 25 ? 'text-emerald-300' : 'text-amber-300'} mb-1">
+                                        <span>Statement #${i + 1} (+${b.points}/25 pts)</span>
+                                        <span>${b.points === 25 ? 'Optimal Script' : 'Needs Softening'}</span>
+                                    </div>
+                                    <p class="text-slate-300">${b.feedback}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            } else if (mission.type === 'chat-rescue') {
+                const checkedGaps = Array.from(document.querySelectorAll('input[name="qa_gaps"]:checked')).map(el => el.value);
+                if (checkedGaps.length === 0) {
+                    showToast('Please select at least one communication gap from the transcript.', 'error');
+                    return;
+                }
+
+                let gapPoints = 0;
+                mission.gapsOptions.forEach(g => {
+                    if (g.correct && checkedGaps.includes(g.id)) gapPoints += 17;
+                    if (!g.correct && checkedGaps.includes(g.id)) gapPoints = Math.max(0, gapPoints - 15);
+                });
+                if (gapPoints >= 50) gapPoints = 50;
+
+                const rescueId = document.querySelector('input[name="rescue_closing"]:checked').value;
+                const rescueObj = mission.rescueOptions.find(r => r.id === rescueId);
+
+                earnedPoints = gapPoints + rescueObj.points;
+                userSummaryText = `Identified ${checkedGaps.length} gaps | Closing: ${rescueObj.text}`;
+                badgeUnlocked = earnedPoints >= 75;
+
+                feedbackHTML = `
+                    <div class="rounded-2xl p-6 bg-slate-900/95 border ${earnedPoints >= 75 ? 'border-emerald-400/50' : 'border-amber-400/50'} space-y-4">
+                        <div class="flex flex-wrap items-center justify-between gap-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br ${mission.badgeColor} flex items-center justify-center text-white text-xl shadow-lg">
+                                    <i class="fa-solid ${mission.badgeIcon}"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold uppercase tracking-wider text-slate-400">Transcript Audit Complete</div>
+                                    <h3 class="font-display text-xl font-extrabold text-white">
+                                        +${earnedPoints} XP ${badgeUnlocked ? `• 🏆 "${mission.badgeName}" Unlocked!` : ''}
+                                    </h3>
+                                </div>
+                            </div>
+                            <span class="px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300">
+                                Score: ${earnedPoints} / ${mission.maxPoints}
+                            </span>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-800/70 border border-white/5 text-sm space-y-2">
+                            <div class="font-bold text-teal-300">Gap Identification (+${gapPoints}/50 pts):</div>
+                            <p class="text-slate-300 text-xs sm:text-sm">
+                                The 3 core failures were: (1) Assuming the UI layout and blaming the customer ("Check properly"), (2) Failing to ask a probing question about their OS/app version, and (3) Ending with a dismissive "Okay."
+                            </p>
+                            <div class="font-bold ${rescueObj.isBest ? 'text-emerald-300' : 'text-amber-300'} pt-2">Closing Selection (+${rescueObj.points}/50 pts):</div>
+                            <p class="text-slate-300 text-xs sm:text-sm">${rescueObj.why}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Update Game State & Competencies
+            gameState.xp += earnedPoints;
+            if (earnedPoints >= 75) {
+                gameState.streak += 1;
+                gameState.maxStreak = Math.max(gameState.maxStreak, gameState.streak);
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 55, spread: 65, origin: { y: 0.7 } });
+                }
+            } else {
+                gameState.streak = 0;
+            }
+
+            gameState.competencies[mission.category].earned += earnedPoints;
+            gameState.competencies[mission.category].max += mission.maxPoints;
+
+            gameState.missionResults.push({
+                missionNumber: mission.number,
+                title: mission.title,
+                category: mission.category,
+                earned: earnedPoints,
+                max: mission.maxPoints,
+                badgeName: badgeUnlocked ? mission.badgeName : null,
+                badgeIcon: mission.badgeIcon,
+                badgeColor: mission.badgeColor,
+                userResponse: userSummaryText
+            });
+
+            // Disable form inputs & hide submit button
+            const form = document.getElementById('mission-form');
+            Array.from(form.elements).forEach(el => el.disabled = true);
+            document.getElementById('btn-submit-mission').classList.add('hidden');
+
+            // Render Feedback + Next Button
+            const isLast = gameState.currentMissionIndex === missions.length - 1;
+            const feedbackPanel = document.getElementById('mission-feedback-panel');
+            feedbackPanel.innerHTML = feedbackHTML + `
+                <div class="mt-6 flex justify-end">
+                    <button type="button" id="btn-next-mission"
+                        class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-teal-500 text-white font-display font-bold text-base shadow-lg btn-glow flex items-center gap-2 cursor-pointer">
+                        <span>${isLast ? 'View Final QA Scorecard' : `Proceed to Mission ${mission.number + 1}`}</span>
+                        <i class="fa-solid ${isLast ? 'fa-trophy' : 'fa-arrow-right'}"></i>
+                    </button>
+                </div>
+            `;
+            feedbackPanel.classList.remove('hidden');
+            updateHUD();
+
+            // Scroll smoothly to feedback
+            feedbackPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            document.getElementById('btn-next-mission').addEventListener('click', () => {
+                if (isLast) {
+                    showFinalScorecard();
+                } else {
+                    gameState.currentMissionIndex += 1;
+                    renderCurrentMission();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+        }
+
+        // --- Render Final QA Evaluation Scorecard ---
+        function showFinalScorecard() {
+            document.getElementById('global-progress-bar').style.width = '100%';
+            document.getElementById('screen-mission').classList.add('hidden');
+            document.getElementById('screen-results').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            const totalEarned = gameState.missionResults.reduce((acc, r) => acc + r.earned, 0);
+            const totalMax = gameState.missionResults.reduce((acc, r) => acc + r.max, 0);
+            const percentage = Math.round((totalEarned / totalMax) * 100);
+
+            if (percentage >= 75 && typeof confetti === 'function') {
+                confetti({ particleCount: 110, spread: 80, origin: { y: 0.6 } });
+            }
+
+            // Rank determination
+            let rankTitle = 'Support Apprentice';
+            if (percentage >= 90) rankTitle = 'Grandmaster CX Champion';
+            else if (percentage >= 75) rankTitle = 'Senior Empathy & Ownership Specialist';
+            else if (percentage >= 60) rankTitle = 'Certified Support Navigator';
+
+            document.getElementById('final-rank-badge').innerHTML = `<i class="fa-solid fa-crown"></i> ${rankTitle}`;
+            document.getElementById('res-agent-name').textContent = gameState.agentName;
+            document.getElementById('res-agent-email').textContent = gameState.agentEmail ? `• ${gameState.agentEmail}` : '';
+            document.getElementById('res-percentage').textContent = `${percentage}%`;
+            document.getElementById('res-total-xp').textContent = `${totalEarned} / ${totalMax} XP`;
+
+            // Competency Bars
+            const compContainer = document.getElementById('res-competencies');
+            compContainer.innerHTML = Object.entries(gameState.competencies).map(([skill, data]) => {
+                const pct = data.max > 0 ? Math.round((data.earned / data.max) * 100) : 0;
+                const barColor = pct >= 80 ? 'from-emerald-400 to-teal-400' : pct >= 60 ? 'from-indigo-400 to-purple-400' : 'from-amber-400 to-rose-400';
+                return `
+                    <div class="p-4 rounded-2xl bg-slate-900/70 border border-white/10">
+                        <div class="flex items-center justify-between text-sm font-bold mb-2">
+                            <span class="text-slate-200">${skill}</span>
+                            <span class="text-teal-300">${pct}%</span>
+                        </div>
+                        <div class="w-full h-2.5 rounded-full bg-slate-800 overflow-hidden">
+                            <div class="h-full rounded-full bg-gradient-to-r ${barColor}" style="width: ${pct}%"></div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Badges Earned
+            const badgesEarned = gameState.missionResults.filter(r => r.badgeName);
+            const badgesContainer = document.getElementById('res-badges');
+            if (badgesEarned.length > 0) {
+                badgesContainer.innerHTML = badgesEarned.map(b => `
+                    <div class="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-slate-900/90 border border-white/15 shadow-md">
+                        <div class="w-8 h-8 rounded-xl bg-gradient-to-br ${b.badgeColor} flex items-center justify-center text-white text-sm">
+                            <i class="fa-solid ${b.badgeIcon}"></i>
+                        </div>
+                        <span class="font-display font-bold text-sm text-white">${b.badgeName}</span>
+                    </div>
+                `).join('');
+            } else {
+                badgesContainer.innerHTML = `<p class="text-sm text-slate-400">Score 75+ points on any mission to unlock specialist badges! Try retaking to earn them all.</p>`;
+            }
+
+            // Mission Review List
+            const reviewContainer = document.getElementById('res-mission-review');
+            reviewContainer.innerHTML = gameState.missionResults.map(r => `
+                <div class="p-4 rounded-2xl bg-slate-900/70 border border-white/10 space-y-2">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div class="font-display font-bold text-white text-base">
+                            Mission ${r.missionNumber}: ${r.title}
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold ${r.earned >= 75 ? 'bg-emerald-500/20 text-emerald-300' : 'bg-amber-500/20 text-amber-300'}">
+                            ${r.earned} / ${r.max} pts
+                        </span>
+                    </div>
+                    <div class="text-xs text-slate-400"><strong>Submitted Response:</strong></div>
+                    <p class="text-xs sm:text-sm text-slate-300 bg-slate-950/70 p-3 rounded-xl border border-white/5 italic">
+                        "${r.userResponse}"
+                    </p>
+                </div>
+            `).join('');
+        }
+
+        // --- Generate Plain-Text Report for Copy / Download ---
+        function generatePlainTextReport() {
+            const totalEarned = gameState.missionResults.reduce((acc, r) => acc + r.earned, 0);
+            const totalMax = gameState.missionResults.reduce((acc, r) => acc + r.max, 0);
+            const percentage = Math.round((totalEarned / totalMax) * 100);
+            const dateStr = new Date().toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' });
+
+            let report = `====================================================\n`;
+            report += `SUPPORT QUEST: EMPATHY & OWNERSHIP QA SCORECARD\n`;
+            report += `====================================================\n`;
+            report += `Expert Name : ${gameState.agentName}\n`;
+            report += `Email       : ${gameState.agentEmail}\n`;
+            report += `Date        : ${dateStr}\n`;
+            report += `Final Score : ${percentage}% (${totalEarned} / ${totalMax} XP)\n`;
+            report += `Max Streak  : ${gameState.maxStreak}\n\n`;
+
+            report += `--- COMPETENCY BREAKDOWN ---\n`;
+            Object.entries(gameState.competencies).forEach(([skill, data]) => {
+                const pct = data.max > 0 ? Math.round((data.earned / data.max) * 100) : 0;
+                report += `• ${skill}: ${pct}% (${data.earned}/${data.max})\n`;
+            });
+
+            report += `\n--- MISSION RESPONSES ---\n`;
+            gameState.missionResults.forEach(r => {
+                report += `\n[Mission ${r.missionNumber}: ${r.title}] - Score: ${r.earned}/${r.max}\n`;
+                report += `Response: "${r.userResponse}"\n`;
+            });
+            report += `\n====================================================\n`;
+            return report;
+        }
+
+        // --- Copy Scorecard Button (Iframe-safe execCommand) ---
+        document.getElementById('btn-copy-report').addEventListener('click', () => {
+            const reportText = generatePlainTextReport();
+            const helper = document.getElementById('clipboard-helper');
+            helper.value = reportText;
+            helper.select();
+            try {
+                document.execCommand('copy');
+                showToast('QA Scorecard copied! Paste it into your trainer submission form.');
+            } catch (err) {
+                showToast('Could not copy automatically. Please use the Download button.', 'error');
+            }
+        });
+
+        // --- Download Scorecard Button ---
+        document.getElementById('btn-download-report').addEventListener('click', () => {
+            const reportText = generatePlainTextReport();
+            const blob = new Blob([reportText], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            const safeName = gameState.agentName.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+            a.href = url;
+            a.download = `QA_Scorecard_${safeName}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            showToast('QA Scorecard downloaded successfully!');
+        });
+
+        // --- Restart Button ---
+        document.getElementById('btn-restart').addEventListener('click', () => {
+            document.getElementById('screen-results').classList.add('hidden');
+            document.getElementById('hud-stats').classList.add('hidden');
+            document.getElementById('progress-container').classList.add('hidden');
+            document.getElementById('screen-welcome').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
+          </body>
+        </html>
